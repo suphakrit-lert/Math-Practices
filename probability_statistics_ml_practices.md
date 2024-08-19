@@ -97,3 +97,34 @@ $$
 & =0.536
 \end{aligned}
 $$
+
+**Example. Small dataset with a lot of features**
+
+You've been asked by a Portfolio Manager to build a model to predict how much a Class-A high-rise residential building is worth. Because this is a niche asset category, you only have detailed data on a few thousand buildings. However, for each building you have data on, you have thousands of data points about that property. What kind of model would you build? What kind of featureengineering work would you do, to support that model?
+
+Key: Small dataset with a lot of features $\rightarrow$ Prone to Overfit
+
+1. Explore data
+   1. Numerical: Distribution, Outlier, Missing, Check linearity vs target, Correlation, Variance
+   1. Categorical: Missing, Duplicate
+
+2. Data Cleaning
+   1. Numerical: Remove outlier (Trim/Winsorizing), Imputation for missing values
+   2. Categorical: Imputation for missing values, Remove duplicate
+
+3. Feature Engineering
+   1. Read data dictionary to understand feature importance \& Remove uninformative columns (e.g. address, name)
+   2. Reduce dimensionality:
+      - PCA (select features with high variance, more than $85 \%$ )
+      - Feature importance for feature selection
+      - Remove highly correlated columns
+      - L1 Regularization
+
+4. Model
+   1. Linear Model: Linear Regression (Ridge/Lasso)
+   2. Non-linear Model: RF Regression, SVR (Support Vector Regression), KNN Regression, Gradient Boosting Regression
+
+5. Evaluation
+   1. Metrics: $R^2$, RMSE
+   
+6. Optimization
