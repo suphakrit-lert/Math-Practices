@@ -82,3 +82,18 @@ P(|Z|>2.53) & =P(Z>2.53 \text { or } Z<-2.53) \\
 $$
 
 Set the confidence to be $95 \%$; hence, $\alpha=1-0.95=0.05$. Since p -value $=0.011$ is lesser than $\alpha=0.05$, we reject the null hypothesis that the coin is fair.
+
+
+**Example 4. Law of Total Probability**
+
+Suppose $80 \%$ of Netflix users rate movies thumbs up $60 \%$ of the time, and thumbs down $40 \%$ of the time. However, $20 \%$ of Netflix users are "lazy": they rate $100 \%$ of the movies they watch as good! Given that someone gives 3 movies IN A ROW a thumbs up, what's the probability they are a "lazy" rater?
+
+$$
+\begin{aligned}
+& P(\text { Lazy } \mid 3 \text { up's }) \\
+& =\frac{P(3 \text { up's } \mid \text { Lazy }) \cdot P(\text { Lazy })}{P(3 \text { up's })} \\
+& =\frac{P(3 \text { up's } \mid \text { Lazy }) \cdot P(\text { Lazy })}{P(3 \text { up's | Lazy }) \cdot P(\text { Lazy })+P(3 \text { up's I Not Lazy }) \cdot P(\text { Not Lazy })} \\
+& =\frac{1^3 \cdot 0.20}{1^3 \cdot 0.20+0.60^3 \cdot 0.80} \\
+& =0.536
+\end{aligned}
+$$
