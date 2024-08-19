@@ -42,3 +42,43 @@ $$
 
 
 Solve (1) \& (2), $V\left(S_0\right)=42$ and $V\left(S_1\right)=36$
+
+
+**Example 3. Hypothesis Testing**
+
+Say you flip a coin 10 times and observe only one heads. What would be your null hypothesis and $p$-value for testing whether the coin is fair or not?
+
+Let $X$ be the random variable of the number of heads obtained from tossing ten coins
+$H_0$ : The coin is fair with $X=5$ from tossing 10 coin
+$H_a$ : The coin is unfair with $X \neq 5$ from tossing 10 coin
+Let's find the expected value and variance of $X$ where is binomial distribution or $X \sim \operatorname{Bin}(n, p)=\operatorname{Bin}(10,0.5)$
+
+$$
+\begin{gathered}
+\mathbb{E}[X]=n p=10 \cdot 0.5=5 \\
+\operatorname{Var}(X)=n p(1-p)=10 \cdot 0.5 \cdot(1-0.5)=2.5
+\end{gathered}
+$$
+
+
+To test if the coin is fair or not, we need to first calculate the test statistics.
+Since we observe only one head from ten toss, we have $X=1$
+
+$$
+Z_0=\frac{X-\mathbb{E}[X]}{\sqrt{\operatorname{Var}(X)}}=\frac{1-5}{\sqrt{2.5}}=2.53
+$$
+
+
+Calculate the p -value, p -value $=P\left(|Z|>Z_0\right)$
+
+$$
+\begin{aligned}
+P(|Z|>2.53) & =P(Z>2.53 \text { or } Z<-2.53) \\
+& =2 P(Z<-2.53) \\
+& =2 \cdot \Phi(-2.53) \\
+& =2 \cdot 0.0057 \\
+& =0.011
+\end{aligned}
+$$
+
+Set the confidence to be $95 \%$; hence, $\alpha=1-0.95=0.05$. Since p -value $=0.011$ is lesser than $\alpha=0.05$, we reject the null hypothesis that the coin is fair.
