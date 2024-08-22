@@ -40,5 +40,8 @@
           break
   ```
 - Merge Two Sorted Lists: double pointer + `while i < n1 and j < n2`
+- Number Complement:
+  - Work with bit -> Use bit operation
+  - Complement of Number: `num.bit_length() -> mask = (1 << bit_length) - 1 -> num ^ mask`
 
 # 5. ML
