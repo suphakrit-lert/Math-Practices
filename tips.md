@@ -44,4 +44,17 @@
   - Work with bit -> Use bit operation
   - Complement of Number: `num.bit_length() -> mask = (1 << bit_length) - 1 -> num ^ mask`
 - Remove Element: Remove elements by `list.remove(num)`
+- Subsequence Check:
+  ```py
+  def isSubsequence(self, s: str, t: str) -> bool:
+      sp = 0
+      tp = 0
+
+      while sp < len(s) and tp < len(t):
+          if s[sp] == t[tp]:
+              sp += 1
+          tp += 1
+      
+      return sp == len(s)
+  ```
 # 5. ML
