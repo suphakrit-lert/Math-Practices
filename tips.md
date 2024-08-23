@@ -104,4 +104,16 @@
   string2_dict = Counter(string2)
   string1_dict - string2_dict == {}
   ```
+
+- Merge Intervals: if next_start <= current_end, update current_end to max(current_end, next_end)
+  ```py
+  merged_intervals = [intervals[0]]
+
+  for i in range(1, len(intervals)):
+      if intervals[i][0] <= merged_intervals[-1][1]:
+          merged_intervals[-1][1] = max(merged_intervals[-1][1], intervals[i][1])
+      else:
+          merged_intervals.append(intervals[i])
+  ```
+  
 # 5. ML
