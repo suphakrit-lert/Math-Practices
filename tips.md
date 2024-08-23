@@ -43,5 +43,5 @@
 - Number Complement:
   - Work with bit -> Use bit operation
   - Complement of Number: `num.bit_length() -> mask = (1 << bit_length) - 1 -> num ^ mask`
-
+- Remove Element: Remove elements by `list.remove(num)`
 # 5. ML
