@@ -7,16 +7,45 @@
 
 # 3. SQL
 - **Pivot: Summarize rows to columns** with `sum(case when col = ‘val1’ then 1 else 0 end) as val1_count` to create a new column
-- Find duplicate -> `select count(dup_col) group by 1, 2, 3 having count(dup_col) > 1`
+- Find duplicate:
+  ```sql
+  select count(dup_col) 
+  group by 1, 2, 3 
+  having count(dup_col) > 1
+  ```
 - Tip: Histogram = Double group by:
   - 1st group by: Count the frequency of each category in CTE 
   - 2nd group by: Create frequency histogram
-- Rolling Avg: `avg(col) over (partition by id order by date rows between 1 preceding and 1 following)`
-- Date difference between two rows:  `... group by id & max(date) – min(date)`
-- Transaction Order: `rank over (partition by id order by date asc) as ranking`
-
+- Rolling Avg: 
+  ```sql
+  avg(col) over (
+    partition by id 
+    order by date 
+    rows between 1 preceding 
+    and 1 following
+  )
+  ```
+- Date difference between two rows:
+  ```sql
+  select max(date) – min(date) as date_diff
+  from source_table
+  group by id
+  ```
+- Transaction Order:
+  ```sql
+  rank over (
+    partition by id 
+    order by date asc
+  ) as ranking
+  ```
 # 4. Algorithms
 - Maximizing Profit: Loop one time, Find the min_price and max_profit (price - min_price, max_profit) at each turn
+  ```py
+  for price in prices:
+      min_value = min(min_value, price)
+      max_profit = max(max_profit, price - min_value)
+  print(max_profit)
+  ```
 - Two Sum to Target: Find a complement (= target - cur_num) if the complement in the list or not
 - Palindrome: `x == x[::-1]`
 - Roman to Integer: Check with `s[i + 1]` but cap at `i < n - 1`
@@ -40,24 +69,24 @@
           break
   ```
 - Merge Two Sorted Lists: double pointer + `while i < n1 and j < n2`
+  ```py
+  while i < n1 and j < n2:
+      if list1[i] < list2[j]:
+          merged_list.append(list1[i])
+          i += 1
+      else:
+          merged_list.append(list2[j])
+          j += 1
+
+  if i < n1:
+      merged_list.extend(list1[i:])
+  elif j < n2:
+      merged_list.extend(list2[j:])
+  ```
 - Number Complement:
   - Work with bit -> Use bit operation
   - Complement of Number: `num.bit_length() -> mask = (1 << bit_length) - 1 -> num ^ mask`
 - Remove Element: Remove elements by `list.remove(num)`
-- Subsequence Check:
-  ```py
-  def isSubsequence(self, s: str, t: str) -> bool:
-      sp = 0
-      tp = 0
-
-      while sp < len(s) and tp < len(t):
-          if s[sp] == t[tp]:
-              sp += 1
-          tp += 1
-      
-      return sp == len(s)
-  ```
-
 - Subsequence Check: Double pointer
   ```py
   while i < len(s) and j < len(t):
@@ -66,5 +95,13 @@
       j += 1
 
   i == len(s)
+  ```
+
+- String2 (`bba`, 2 `b`) Cover String1 (`b`, 1 `b`) if `string1_dict - string2_dict == {}`
+  ```py
+  from collections import Counter
+  string1_dict = Counter(string1)
+  string2_dict = Counter(string2)
+  string1_dict - string2_dict == {}
   ```
 # 5. ML
