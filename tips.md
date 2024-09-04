@@ -115,5 +115,25 @@
       else:
           merged_intervals.append(intervals[i])
   ```
-  
+
+- Summary Range: Convert to interval first
+  ```py
+  nums = [0, 2, 3, 4, 6, 8, 9]
+  ranges = []
+  for num in nums:
+      if ranges and ranges[-1][1] == num - 1:
+          ranges[-1][1] = num
+      else:
+          ranges.append([num, num])
+  ```
+
+- Check One-to-One Mapping:
+  ```py
+  for (x, y) in zip(pattern, s):
+      if x in mapper.keys():
+          if mapper[x] != y:
+              return False
+      else:
+          mapper[x] = y
+  ```
 # 5. ML
