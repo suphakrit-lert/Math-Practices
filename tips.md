@@ -38,6 +38,15 @@
     order by date asc
   ) as ranking
   ```
+- Whenever the question asks about finding “0 values,” e.g., users or neighborhoods, start thinking LEFT JOIN
+  ```sql
+  SELECT neighborhoods.name
+  FROM neighborhoods
+  LEFT JOIN users
+    ON neighborhoods.id = users.neighborhood_id
+  WHERE users.id IS NULL
+  ```
+
 # 4. Algorithms
 - Maximizing Profit: Loop one time, Find the min_price and max_profit (price - min_price, max_profit) at each turn
   ```py
