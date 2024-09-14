@@ -46,7 +46,10 @@
     ON neighborhoods.id = users.neighborhood_id
   WHERE users.id IS NULL
   ```
-
+- Lag()
+  ```sql
+  lags(col, 1, 0) over (partition by col) as new_col
+  ```
 # 4. Algorithms
 - Maximizing Profit: Loop one time, Find the min_price and max_profit (price - min_price, max_profit) at each turn
   ```py
@@ -145,4 +148,18 @@
       else:
           mapper[x] = y
   ```
+
+- Advanced Stocking Selling: Use greedy algorithm. Find max and sell immediately
+  ```sql
+  start = prices[0]
+  max = 0
+  n = len(prices)
+
+  for i in range(1, n):
+      if start < prices[i]:
+          max += prices[i] - start
+      
+      start = prices[i]
+  ```
+
 # 5. ML
