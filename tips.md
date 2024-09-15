@@ -1,6 +1,7 @@
 # 1. Probability
 - Law of Total Probability: เศษกับตัวนึงของส่วนจะเหมือนกัน
-
+- Check Sample Space!
+- Check: Sample X elements, One at a time?, With replacement?
 
 # 2. Statistics
 - Hypothesis Testing: Calculate the test statistics $Z_0$ first
@@ -150,7 +151,7 @@
   ```
 
 - Advanced Stocking Selling: Use greedy algorithm. Find max and sell immediately
-  ```sql
+  ```py
   start = prices[0]
   max = 0
   n = len(prices)
@@ -160,6 +161,19 @@
           max += prices[i] - start
       
       start = prices[i]
+  ```
+
+- Remove duplicated from the sorted array: Double pointers
+  ```py
+  nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+  n = len(nums)
+
+  j = 1
+
+  for i in range(1, n):
+      if nums[i] != nums[j - 1]:
+          nums[j] = nums[i]
+          j += 1
   ```
 
 # 5. ML
