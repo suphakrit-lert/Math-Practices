@@ -40,6 +40,11 @@ $$ P(A)=\binom{6}{4}(0.25)^4(0.75)^2 $$
 
 # 2. Statistics
 - **Hypothesis Testing: Calculate the test statistics $Z_0$ first**
+- Left-skew = ข้อสอบกระจอกที่ทุกคนทำได้
+  - Mean (คนโง่ดึงคะแนนลง) < Median (คนปกติทำได้) < Mode (คนปกติทำได้เยอะ)
+- Right-skew = รวยกระจุกจนกระจาย
+  - Mean (คนรวยดึงมีน) > Median (คนปกติจน) > Mode (คนปกติสุดๆจนมาก)
+
 
 # 3. SQL
 - **Pivot: Summarize rows to columns** with `sum(case when col = ‘val1’ then 1 else 0 end) as val1_count` to create a new column
@@ -185,7 +190,7 @@ $$ P(A)=\binom{6}{4}(0.25)^4(0.75)^2 $$
           mapper[x] = y
   ```
 
-- Advanced Stocking Selling: Use greedy algorithm. Find max and sell immediately
+- Advanced Stocking Selling: Use GREEDY algorithm. Find max and sell immediately
   ```py
   start = prices[0]
   max = 0
@@ -211,4 +216,34 @@ $$ P(A)=\binom{6}{4}(0.25)^4(0.75)^2 $$
           j += 1
   ```
 
+- Needle in a Haystack
+  ```py
+  n_needle = len(needle)
+  n_haystack = len(haystack)
+
+  if n_haystack < n_needle:
+      return -1
+
+  for i in range(0, n_haystack):
+      if haystack[i:i+n_needle] == needle:
+          return i
+  ```
+
+- Rotate Array: Use Modulo
+  ```py
+  # Time Complexity: O(n)
+  # Space Complexity: O(n)
+  nums = [1, 2, 3, 4, 5, 6, 7]
+  k = 3
+
+  n = len(nums)
+  k = k % n
+  rotated = [0] * n
+
+  for i in range(n):
+      rotated[(i + k) % n] = nums[i]
+
+  for i in range(n):
+      nums[i] = rotated[i]
+  ```
 # 5. ML
