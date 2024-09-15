@@ -1,10 +1,40 @@
 # 1. Probability
+- **ไล่ Probability แต่ละตัว & คิด Sample Space แต่ละตัวให้ถูก!!!**
 - Law of Total Probability: เศษกับตัวนึงของส่วนจะเหมือนกัน
 - Check Sample Space!
 - Check: Sample X elements, One at a time?, With replacement?
+- **ส่วนมาก Dice/Card จะเป็นลำดับ จับ one-by-one**
+- Pair of Card:
+  ```
+  - First Card can be anything (52/52) 
+  - Second card has to be paired (12/51) 
+  - So P = (52/52)(12/51)
+  ```
+- Pair of Q: Probability of choosing 2 queens out of a deck of cards 
+$$ P(A) = \frac{4}{52} \cdot \frac{3}{51} $$
+**Dependence: คิด Sample Space ของแต่ละตัวที่จับให้ถูก ตัวแรกเลือกจับได้ 52 ใบ ตัวสองเลือกจับได้แค่ 51 ใบ**
+- **Exact Face/Number: ได้หน้าเป๊ะ = คิดแยก 3 เคส เคส1: ซ้ายหน้าเป๊ะ, เคส2: ขวาหน้าเป๊ะ, เคส3: ทั้งคู่หน้าเป๊ะ**
+
+Let's say you have 2 dice. What is the probability of getting at least one 4? A = [X][4] or [4][X] or [4][4]
+$$
+P(A)=\frac{5}{6} \cdot \frac{1}{6}+\frac{1}{6} \cdot \frac{5}{6}+\frac{1}{6} \cdot \frac{1}{6}
+$$
+
+If you roll a dice three times, what is the probability to get two consecutive threes?
+$$
+\begin{aligned}
+& A=[3][3][X] \text { or }[X][3][3] \text { or }[3][3][3] \\
+& \qquad P(A)=\left(\frac{1}{6}\right)^2 \cdot \frac{5}{6} \cdot 2+\left(\frac{1}{6}\right)^3=\frac{11}{216}
+\end{aligned}
+$$
+
+- **Complementary**
+```
+At least two N from has X ⟺ 1 - None of N has X
+```
 
 # 2. Statistics
-- Hypothesis Testing: Calculate the test statistics $Z_0$ first
+- **Hypothesis Testing: Calculate the test statistics $Z_0$ first**
 
 # 3. SQL
 - **Pivot: Summarize rows to columns** with `sum(case when col = ‘val1’ then 1 else 0 end) as val1_count` to create a new column
