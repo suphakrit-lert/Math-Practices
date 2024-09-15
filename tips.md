@@ -30,8 +30,13 @@ $$
 
 - **Complementary**
 ```
-At least two N from has X ⟺ 1 - None of N has X
+*AT LEAST* two N from has X ⟺ 1 - None of N has X
 ```
+
+- Binomial Distribution 
+
+According to hospital records, 75% of patients suffering from a disease die from that disease. Find out the probability that 4 out of the 6 randomly selected patients survive.
+$$ P(A)=\binom{6}{4}(0.25)^4(0.75)^2 $$
 
 # 2. Statistics
 - **Hypothesis Testing: Calculate the test statistics $Z_0$ first**
