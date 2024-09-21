@@ -33,10 +33,22 @@ $$
 *AT LEAST* two N from has X ⟺ 1 - None of N has X
 ```
 
+- Birthday Problem is PAIRING Problem: Pair first, second, ...
+Room $\mathrm{w} / n \mathrm{ppl}$, Find prob of at least two ppl have same birthday
+$\mathrm{A}=$ Event that at least two ppl have same birthday
+$\mathrm{A}^{\mathrm{c}}=$ Event that no one shares same birthday
+
+$$
+P(A)=1-P\left(A^c\right)=1-\frac{365 \times 364 \times \ldots \times(365-n+1)}{365^n}
+$$
+
+
 - Binomial Distribution 
 
 According to hospital records, 75% of patients suffering from a disease die from that disease. Find out the probability that 4 out of the 6 randomly selected patients survive.
 $$ P(A)=\binom{6}{4}(0.25)^4(0.75)^2 $$
+
+- Two RV Multiplications -> Use Tower Rules
 
 # 2. Statistics
 - **Hypothesis Testing: Calculate the test statistics $Z_0$ first**
@@ -44,7 +56,43 @@ $$ P(A)=\binom{6}{4}(0.25)^4(0.75)^2 $$
   - Mean (คนโง่ดึงคะแนนลง) < Median (คนปกติทำได้) < Mode (คนปกติทำได้เยอะ)
 - Right-skew = รวยกระจุกจนกระจาย
   - Mean (คนรวยดึงมีน) > Median (คนปกติจน) > Mode (คนปกติสุดๆจนมาก)
+- Sample Proportion SD: $\sigma=p(1-p)$
+- CI of Proportion RV
 
+  Let's say the population on Facebook clicks ads with a clickthrough-rate of $p$. We select a sample of size $N$ and examine the sample's conversion rate, denoted by $\hat{p}$, what is the minimum sample size $N$ such that $\mathrm{P}(|\hat{p}-p|<\delta)=95 \%$ ?
+Tips: Sample Proportion SD: $\sigma=p(1-p)$
+
+$$
+\begin{gathered}
+P\left(|Z|<Z_{1-\frac{\alpha}{2}}\right)=1-\alpha=0.95 \\
+\mathrm{P}(|\hat{p}-p|<\delta)=95 \% \\
+\mathrm{P}\left(\frac{|\hat{p}-p|}{\sqrt{\operatorname{Var}(p)}}<\frac{\delta}{\sqrt{\operatorname{Var}(p)}}\right)=95 \% \\
+\mathrm{P}\left(|Z|<\frac{\delta}{\sqrt{\operatorname{Var}(p)}}\right)=95 \% \\
+\frac{\delta}{\sqrt{\operatorname{Var}(p)}}=Z_{1-\frac{\alpha}{2}}=1.96 \\
+\frac{\delta \cdot \sqrt{n}}{\sigma}=1.96 \\
+\sqrt{n}=1.96 \frac{\sigma}{\delta} \\
+\text { Sample Proportion: } \sigma=p(1-p) \\
+n=\left(1.96 \frac{p(1-p)}{\delta}\right)^2
+\end{gathered}
+$$
+
+- CI of Binomial distribution
+
+Confidence Interval: Binomial Distribution There are 100 products and 25 of them are bad. What is the confidence interval?
+$X$ is the RV for number of bad products from 100 products
+
+$$
+\begin{gathered}
+P\left(|Z|<Z_{1-\frac{\alpha}{2}}\right)=1-\alpha \\
+P\left(\left|\frac{X-\mathbb{E}[X]}{\sigma / \sqrt{n}}\right|<Z_{1-\frac{\alpha}{2}}\right)=1-\alpha \\
+\mathbb{E}[X] \in\left[X-\frac{\sigma}{\sqrt{n}} \cdot Z_{1-\frac{\alpha}{2}}, X+\frac{\sigma}{\sqrt{n}} \cdot Z_{1-\frac{\alpha}{2}}\right] \\
+\mathbb{E}[X] \in\left[X-\frac{n p(1-p)}{\sqrt{n}} \cdot Z_{1-\frac{\alpha}{2}}, X+\frac{n p(1-p)}{\sqrt{n}} \cdot Z_{1-\frac{\alpha}{2}}\right] \\
+\mathbb{E}[X] \in\left[25-\frac{100 \cdot 0.25(0.75)}{\sqrt{100}} \cdot 1.96,25+\frac{100 \cdot 0.25(0.75)}{\sqrt{100}} \cdot 1.96\right] \\
+\mathbb{E}[X] \in[25-3.675,25+3.675]
+\end{gathered}
+$$
+
+- A/B testing: is a controlled experiment that compares two or more versions of a component to determine which performs better based on specific metrics
 
 # 3. SQL
 - **Pivot: Summarize rows to columns** with `sum(case when col = ‘val1’ then 1 else 0 end) as val1_count` to create a new column
@@ -54,6 +102,14 @@ $$ P(A)=\binom{6}{4}(0.25)^4(0.75)^2 $$
   group by 1, 2, 3 
   having count(dup_col) > 1
   ```
+- Handle duplicate data in SQL
+  ```
+  1.	Select Distinct
+  2.	GROUP BY
+  3.	Unique Key 
+  4.	Delete duplicated data
+  ```
+
 - Tip: Histogram = Double group by:
   - 1st group by: Count the frequency of each category in CTE 
   - 2nd group by: Create frequency histogram
@@ -90,6 +146,11 @@ $$ P(A)=\binom{6}{4}(0.25)^4(0.75)^2 $$
 - Lag()
   ```sql
   lags(col, 1, 0) over (partition by col) as new_col
+  ```
+- Tips: Indexes = Lookup Table 1) Retrieve data faster 2) Reduce Disc Access
+- CAST before doing the date part 
+  ```dql
+  date_part('day', transaction date::date)
   ```
 # 4. Algorithms
 - Maximizing Profit: Loop one time, Find the min_price and max_profit (price - min_price, max_profit) at each turn
